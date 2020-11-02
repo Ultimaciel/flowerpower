@@ -1,9 +1,10 @@
--- Database genaamd drempeltoets maken als het nog niet bestaat--
+-- Database genaamd flowerpower maken als het nog niet bestaat--
 CREATE DATABASE IF NOT EXISTS flowerpower;
 
--- Database genaamd drempeltoets gebruiken--
+-- Database genaamd flowerpower gebruiken--
 USE flowerpower;
 
+-- Tabel genaamd klant maken--
 CREATE TABLE klant(
     klantcode  INT(255) NOT NULL AUTO_INCREMENT,
     voorletters VARCHAR(255) NOT NULL,
@@ -18,6 +19,7 @@ CREATE TABLE klant(
     PRIMARY KEY(klantcode)
 );
 
+-- Tabel genaamd artikel maken--
 CREATE TABLE artikel(
     artikelcode INT(255) NOT NULL AUTO_INCREMENT,
     artikel VARCHAR(255) NOT NULL,
@@ -25,6 +27,7 @@ CREATE TABLE artikel(
     PRIMARY KEY(artikelcode)
 );
 
+-- Tabel genaamd factuur maken--
 CREATE TABLE factuur(
     factuurcode INT(255) NOT NULL AUTO_INCREMENT,
     factuurdatum DATE NOT NULL,
@@ -33,6 +36,7 @@ CREATE TABLE factuur(
     FOREIGN KEY(klantcode) REFERENCES klant(klantcode)
 );
 
+-- Tabel genaamd factuurregel maken--
 CREATE TABLE factuurregel(
     factuurregelcode INT(255) NOT NULL AUTO_INCREMENT,
     factuurcode INT(255) NOT NULL,
@@ -44,6 +48,7 @@ CREATE TABLE factuurregel(
     FOREIGN KEY(artikelcode) REFERENCES artikel(artikelcode)
 );
 
+-- Tabel genaamd winkel maken--
 CREATE TABLE winkel(
     winkelcode INT(255) NOT NULL AUTO_INCREMENT,
     winkelnaam VARCHAR(255) NOT NULL,
@@ -54,6 +59,7 @@ CREATE TABLE winkel(
     PRIMARY KEY(winkelcode)
 );
 
+-- Tabel genaamd medewerker maken--
 CREATE TABLE medewerker(
     medewerkercode INT(255) NOT NULL AUTO_INCREMENT,
     voorletter VARCHAR(255) NOT NULL,
@@ -64,6 +70,7 @@ CREATE TABLE medewerker(
     PRIMARY KEY(medewerkercode)
 );
 
+-- Tabel genaamd bestelling maken--
 CREATE TABLE bestelling(
     bestellingcode INT(255) NOT NULL AUTO_INCREMENT,
     artikelcode INT(255) NOT NULL,
